@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="ulScores">
+        <li>12</li>
+        <li>54</li>
+        <li>23</li>
+        <li>98</li>
+        <li>56</li>
+    </ul>
+    <script>
+        var html=ulScores.innerHTML;
+        console.log(html);
+        //去掉开头的空格和li标签等
+        html=html.replace(/^\s*<li>/i,'');
+        //去掉结尾的空格和li标签等
+        html=html.replace(/<\/li>\s*$/i,'');
+        //去掉中间的空格和li标签等
+        scores=html.split(/<\/li>\s*<li>/i);
+        //[12,54,23,98,56]
+        console.log(scores);
+        //对数组进行从大到小排序
+        scores.sort(function(a,b){
+            return b-a;
+        })
+        console.log(scores);
+        html='<li>'+scores.join('</li><li>')+'</li>';
+        ulScores.innerHTML=html;
+        console.log(html);
+    </script>
+</body>
+</html>
